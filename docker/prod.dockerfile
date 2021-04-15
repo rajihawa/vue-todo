@@ -19,6 +19,7 @@ EXPOSE 8000
 
 RUN apk add --update nodejs npm yarn
 
+RUN cd /app/web && yarn
 RUN cd /app/web && yarn build
 RUN cd /app
 
