@@ -10,7 +10,7 @@ steps:
       - name: dockersock
         path: /var/run
     commands:
-      - docker build -t vue-todo .
+      - docker build -f docker/prod.dockerfile -t vue-todo .
       - docker tag guac-client:latest guac-client:$(cat version | tr -d '\n')
 
 volumes:
