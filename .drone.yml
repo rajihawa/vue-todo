@@ -1,0 +1,19 @@
+---
+kind: pipeline
+type: kubernetes
+name: vue-todo
+
+steps:
+  - name: build
+    image: docker:dind
+    volumes:
+      - name: dockersock
+        path: /var/run
+    commands:
+      - docker build -t vue-todo .
+      - docker tag guac-client:latest guac-client:$(cat version | tr -d '\n')
+
+volumes:
+  - name: dockersock
+    host:
+      path: /var/run
